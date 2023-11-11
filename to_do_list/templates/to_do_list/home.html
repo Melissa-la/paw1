@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>do-any</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+      
+       
+
+    
+        </style>
+</head>
+<body>
+    <form action="{% url 'add' %}" method="post" class="main-form">
+      {% csrf_token %}
+        <label for="task"> task</label>
+        <input type="text" name="task">
+        <label for="time">time</label>
+        <input type="datetime-local" name="time">
+        <label for="notify">notify</label>
+        <input type="datetime-local" name="notify">
+        <button  class="main-button" type="submit"> submit</button>
+    </form>
+    <h2>Tasks Table</h2>
+
+<table>
+  <tr>
+    <th>task</th>
+    <th>time</th>
+    <th>notify</th>
+    <th>update</th>
+    <th>delete</th>
+  </tr>
+  {% for x in tasks %}
+  <tr>
+    <td> {{x.task}} </td>
+    <td> {{x.time}} </td>
+    <td> {{x.notify}} </td>
+    <td> <a href=""> <button>update</button> </a> </td>
+    <td> <a href="{% url 'delete' x.id %}"> <button>delete</button> </a> </td>
+  </tr>
+  {% endfor %}
+</table>
+<a href="{% url 'logout' %}"><button>logout</button></a>
+
+</body>
+</html>

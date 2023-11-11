@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #FAF2EA;
+      height: 100vh;
+    }
+
+    .container {
+      width: 600px;
+      background-color: #fff;
+      border-radius: 4px;
+      margin-top: 70px;
+    }
+
+    .form-control {
+      background: #dfe9f5;
+    }
+
+    button {
+      background: #b36a5e;
+      color: #fff;
+      padding: 10px 20px;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background-color: #faf2ea;
+      color: #07001f;
+    }
+
+    /* Added style for invalid input */
+    .invalid-input {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+    
+ <div id="app" class="container">
+    <center>
+      <h1>LOG IN</h1>
+      <p>Welcome to our site
+        {% if message %}
+        <div>{{message}}</div>
+        {% endif %}
+      </p><br>
+    </center>
+
+    <form class="my-4"  action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <label><b>Username</b></label>
+      <input :class="{ 'form-control': true, 'invalid-input': isInvalid && !username }" v-model="username" type="text" placeholder="Enter Username" name="username">
+     
+      <label><b>Password</b></label>
+      <input :class="{ 'form-control': true, 'invalid-input': isInvalid && !password }" v-model="password" type="password" placeholder="Enter Password" name="password">
+
+      <div class="check my-3">
+        <input type="checkbox" class="form-check-input">
+        <label>Remember me</label>
+      </div>
+  
+        <button type="submit" class=" ">Login  </button>
+     
+
+      <div class="contain d-flex justify-content-between align-items-center mt-2">
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+      <center><a href="{% url 'signin' %}" class="mx-5">SIGNIN</a></center>
+    </form>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        username: '',
+        password: '',
+        isInvalid: false
+      },
+      methods: {
+        submitForm() {
+          // Check for empty inputs
+          if (!this.username || !this.password) {
+            this.isInvalid = true;
+          } else {
+            this.isInvalid = false;
+            // Add your form submission logic here
+            console.log('Form submitted!');
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
