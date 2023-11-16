@@ -1,8 +1,16 @@
 hi every one , my name is lammali mohamed yanis and nobili douaa , we are here to present our paw project so let's get started
-as we get older and with time passby , we found our selfs with more challenges responsiblity's such as : Familly , work , health ...ext .
+as we get older and with time passby , we found our selfs with more challenges and responsiblity's such as : Familly , work , health ...ext .
 as result it is hard to achieve all of the tasks without having a to-do list : some of the problems we might face are : forgetfulness , lack of prioritizatiion , 
 time managemet issues , increased of stress , Missed opportunities and disorganization .
 As a solution we present to you Do-Any , Do-any is a to-do list webapplication and the name of the app is actually just a shortcut for do anything a simple name 
 for a simple object .
 Our website Object is to help you organize, prioritize and track your tasks, as well as to motivate you to achieve your personal and professional goals and to increase
 your productivity . 
+some of our website functions are :
+
+login and logout methodes
+save the users tasks inside a database
+notify the users when the time of thier tasks arrive
+organize tasks and make it easier to searche
+
+In order to create our website we did use some of the frameworks and libraries like "django , vue.js "
